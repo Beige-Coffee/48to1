@@ -30,6 +30,8 @@ So why is imagining your ***best possible self*** so important? Well, imagining 
 Let's talk about happiness - the ideal that, perhaps, most of us strive for. There's no shortage of books, blog posts, and self-proclaimed prophetic recipes that advise on ways to achieve higher states of well-being. So, how do we sort through the clutter? Leveraging research-driven methods is a great place to start - which brings us back to expressive writing. For instance, writing about your ***best possible self*** has been shown to increase life-satisfaction, decrease stress, and even reduce symptoms of physical illnesses (King, 2001). This is not inconsequential. Simply writing about your life goals can make you happier! That's a free and simple solution. Additionally, studies have also shown that engaging in writing exercises, especially ones in which you contemplate traumatic experiences, **can help an individual find employment faster after being laid off** (Spera, Buhrfeind, & Pennebaker, 1994). 
 
 
+
+
 ## Citations...
 
 1) The Effects of Mental Simulation on Coping with Controllable Stressful Events
