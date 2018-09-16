@@ -1,6 +1,5 @@
 # 48to1
-Using 30,000 hand-graded Wikipedia articles and NLP to predict the quality of Wikipedia articles and create a knowledge graph that identifies both articles and topics in need of editorial and epistemological attention.
-
+The Idea: User spends 1 hour over the next 48 writing down their future goals (career, relationship, education, etc.). Then, using machine learning, analyze user's personality traits, mindset (analytic v.s. narrative) , sentiment, and more. Subsequently, provide user-specific empirical research to help them achieve predetermined goals.
 
 Please note that this is a work-in-progress. 
 
