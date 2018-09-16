@@ -32,14 +32,18 @@ Let's talk about happiness - the ideal that, perhaps, most of us strive for. The
 
 ## Citations...
 
-1) The Effects of Mental Simulation on Coping with Controllable Stressful Events (Rivkin & Taylor, 1999)
-- http://journals.sagepub.com/doi/10.1177/01461672992510002
+1) The Effects of Mental Simulation on Coping with Controllable Stressful Events
+- (Rivkin & Taylor, 1999)
+  - http://journals.sagepub.com/doi/10.1177/01461672992510002
 
-2) From Thought to Action: Effects of Process-Versus Outcome-Based Mental Simulations on Performance (Pham & Taylor, 1999)
-- http://journals.sagepub.com/doi/abs/10.1177/0146167299025002010
+2) From Thought to Action: Effects of Process-Versus Outcome-Based Mental Simulations on Performance
+- (Pham & Taylor, 1999)
+  - http://journals.sagepub.com/doi/abs/10.1177/0146167299025002010
 
-3) The Health Benefits of Writing About Life Goals (King, 2001)
-- http://journals.sagepub.com/doi/abs/10.1177/0146167201277003
+3) The Health Benefits of Writing About Life Goals
+- (King, 2001)
+  - http://journals.sagepub.com/doi/abs/10.1177/0146167201277003
 
-4) Expressive Writing and Coping with Job Loss (Spera, Buhrfeind, & Pennebaker, 1994)
-- https://www.jstor.org/stable/256708?seq=1#page_scan_tab_contents
+4) Expressive Writing and Coping with Job Loss
+- (Spera, Buhrfeind, & Pennebaker, 1994)
+  - https://www.jstor.org/stable/256708?seq=1#page_scan_tab_contents
