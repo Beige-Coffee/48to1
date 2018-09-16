@@ -18,7 +18,7 @@ Why does this work? Let's dive a little deeper into the research.
 #### Self Regulation
 Engaging in mentally stimulating activities, exactly like the one described above, have been shown to increase well-being (Rivkin & Taylor, 1999). Additionaly, recent research on detailing your ***best possible self*** has indicated that, by doing so, one actively engages in internal link between *thought* and *action*, further enabling them to picture the *best possible path* to get there (Pham & Taylor, 1999). This focus on self-regulation is powerful, as it shifts the individuals mindset towards that of an analytical one - able to structurally break down their goals into sub-tasks that they can then worl towards in a sustainable manner. As any goal-setting would know, success is a marathon - not a sprint.
 
-Another benefit of the analytical mind is that is forces the individual to consider all the possible obstacles they could encounter. Furthermore, these road-blocks would have existed whether or not the individual was prepared for them or not. We can think of this as traveling to the airport. Whether you know it or not, there may be an accident on the highway and this could cause you to miss your flight. However, if you develop a goal-setting mindset that involves actively assessing your path to that goal (in this case, getting to the airport), you may notice this obstace and take the train instead. This reduction of goal-conflicts has also been detailed in recent research - (Pennebaker, 1998) .
+Another benefit of the analytical mind is that is forces the individual to consider all the possible obstacles they could encounter. Furthermore, these road-blocks would have existed whether or not the individual was prepared for them or not. We can think of this as traveling to the airport. Whether you know it or not, there may be an accident on the highway and this could cause you to miss your flight. However, if you develop a goal-setting mindset that involves actively assessing your path to that goal (in this case, getting to the airport), you may notice this obstacle and take the train instead. 
 
 
 #### Connecting The Dots
@@ -27,5 +27,19 @@ So why is imagining your ***best possible self*** so important? Well, imagining 
 <img width="822" alt="screen shot 2018-09-16 at 7 43 06 am" src="https://user-images.githubusercontent.com/34213201/45597639-302edf80-b984-11e8-90e5-393a9d9f9e3b.png">
 
 #### Well-Being
-Another side-effect of 
+Let's talk about happiness - the ideal that, perhaps, most of us strive for. There's no shortage of books, blog posts, and self-proclaimed prophetic recipies that advise on ways to achieve higher states of well-being. So, how do we sort through the clutter? Leveraging research-driven methods is a great place to start - which brings us back to expressive writing. For instance, writing about your ***best possible self*** has been shown to increase life-satisfaction, decrease stress, and even reduce symptoms of physical illnesses (King, 2001). This is not inconsequential. Simply writing about you life goals can make you happier! That's a free and simple solution. Additionaly, studies have also shown that engaging in writing exercises, especially ones in which you contemplate tramatic experiences, **can help an individual find employement faster after being laid off** (Spera, Buhrfeind, & Pennebaker, 1994). 
 
+
+## Citations...
+
+1) The Effects of Mental Simulation on Coping with Controllable Stressful Events (Rivkin & Taylor, 1999)
+- http://journals.sagepub.com/doi/10.1177/01461672992510002
+
+2) From Thought to Action: Effects of Process-Versus Outcome-Based Mental Simulations on Performance (Pham & Taylor, 1999)
+- http://journals.sagepub.com/doi/abs/10.1177/0146167299025002010
+
+3) The Health Benefits of Writing About Life Goals (King, 2001)
+- http://journals.sagepub.com/doi/abs/10.1177/0146167201277003
+
+4) Expressive Writing and Coping with Job Loss (Spera, Buhrfeind, & Pennebaker, 1994)
+- https://www.jstor.org/stable/256708?seq=1#page_scan_tab_contents
