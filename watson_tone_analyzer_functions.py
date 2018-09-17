@@ -43,4 +43,4 @@ def text_to_sentence_analysis(text):
     df = pd.DataFrame.from_dict(tone_analysis['sentences_tone'])
     df['score'] = df['tones'].apply(get_score)
     df['tone'] = df['tones'].apply(get_tone)
-    return df[['sentence_id', 'text', 'score', 'tone']]
+    return df[['text', 'score', 'tone']]
