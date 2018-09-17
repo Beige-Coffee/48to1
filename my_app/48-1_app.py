@@ -16,7 +16,7 @@ def welcome_page():
 
 @app.route('/get_started', methods=['GET'])
 def load_get_started():
-    return render_template('get_started.html')
+    return render_template('get_started2.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
