@@ -15,8 +15,12 @@ def welcome_page():
     return render_template('index.html')
 
 @app.route('/research', methods=['GET'])
-def load_analyze():
+def load_research():
     return render_template('research.html')
+
+@app.route('/analyze', methods=['GET'])
+def load_analyze():
+    return render_template('analyze.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
