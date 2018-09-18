@@ -22,6 +22,10 @@ def welcome_page():
 def load_research():
     return render_template('research.html')
 
+@app.route('/analyze_d3', methods=['GET'])
+def load_d3():
+    return render_template('analyze_d3.html')
+
 @app.route('/analyze', methods=['GET', 'POST'])
 def load_analyze():
     if request.method == 'POST':
@@ -44,6 +48,6 @@ def style_table(raw_table):
     return table
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081, debug=False)
+    app.run(host='0.0.0.0', port=8081, debug=True)
 
 
