@@ -26,15 +26,16 @@ def load_research():
 def load_analyze():
     if request.method == 'POST':
         text = request.form['text']
-        tone = text_to_sentence_analysis(text)
-        personality = all_personality_info_to_df(text)
-        with pd.option_context('display.max_colwidth', -1):
-            raw_tone_table = tone.to_html(classes='table table-striped table-hover', index=False, escape=False)
-            raw_personality_table = personality.to_html(classes='table table-striped table-hover', index=False, escape=False)
-        tone_table = style_table(raw_tone_table)
-        personality_table = style_table(raw_personality_table)
-        return render_template('analyze.html', tone_table=tone_table, personality_table=personality_table)
-    return render_template('analyze.html')
+        if len(text.split()) > 100:
+            tone = text_to_sentence_analysis(text)
+            personality = all_personality_info_to_df(text)
+            with pd.option_context('display.max_colwidth', -1):
+                raw_tone_table = tone.to_html(classes='table table-striped table-hover', index=False, escape=False)
+                raw_personality_table = personality.to_html(classes='table table-striped table-hover', index=False, escape=False)
+            tone_table = style_table(raw_tone_table)
+            personality_table = style_table(raw_personality_table)
+            return render_template('analyze.html', tone_table=tone_table, personality_table=personality_table)
+    return render_template('analyze_no_text.html')
 
 def style_table(raw_table):
     old_html = '<table border="1" class="dataframe'
