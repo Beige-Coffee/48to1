@@ -68,8 +68,7 @@ def profile_to_values_df(profile):
     return df[['trait','name', 'percentile']]
 
 
-def all_personality_info_to_df(text):
-    profile = personality_insights.profile(content = text, content_type='text/plain').get_result()
+def all_personality_info_to_df(profile):
     frames = [text_to_big5_personality_pd(profile),
               text_to_openness_sub_personality_pd(profile),
               text_to_conscientiousness_sub_personality_pd(profile),

@@ -6,13 +6,11 @@ import pickle
 import numpy as np
 import numpy as np
 import pandas as pd
-from watson_personality_functions import all_personality_info_to_df
+from watson_personality_functions import all_personality_info_to_df, personality_insights
 from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, tone_to_doc_analysis, tone_analyzer
 
 app = Flask(__name__,
             static_url_path='') 
-
-tone_analysis = pickle.load(open("tone_analysis.p", "rb"))
 
 @app.route('/', methods=['GET'])
 def welcome_page():
@@ -22,17 +20,31 @@ def welcome_page():
 def load_research():
     return render_template('research.html')
 
-@app.route('/analyze_d3', methods=['GET'])
-def load_d3():
-    data = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/analytical.pkl", "rb" ) )
-    doc = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/doc.pkl", "rb" ) )
-    return render_template('analyze_text_tone.html', data=data, doc=doc)
+@app.route('/example', methods=['GET'])
+def load_example():
+    tone_analysis_example = pickle.load(open("tone_analysis.p", "rb"))
+    data = pd.DataFrame(list(find_sentence_tone(tone_analysis_example, 'Analytical')))
+    doc = tone_to_doc_analysis(tone_analysis_example)
+    personailty_df = pickle.load( open( "personality.pkl", "rb" ) )
+    with pd.option_context('display.max_colwidth', -1):
+        personality_table =  personailty_df.to_html(classes='table table-striped table-hover', index=False, escape=False)
+        return render_template('example.html', data=data, doc=doc, personality_table=personality_table)
+
+@app.route('/example/<tone_name>', methods=['GET'])
+def load_example_tone(tone_name):
+    tone_analysis_example = pickle.load(open("tone_analysis.p", "rb"))
+    data = pd.DataFrame(list(find_sentence_tone(tone_analysis_example, tone_name)))
+    doc = tone_to_doc_analysis(tone_analysis_example)
+    personailty_df = pickle.load( open( "personality.pkl", "rb" ) )
+    with pd.option_context('display.max_colwidth', -1):
+        personality_table =  personailty_df.to_html(classes='table table-striped table-hover', index=False, escape=False)
+        return render_template('example.html', data=data, doc=doc, personality_table=personality_table)
 
 @app.route('/analyze/<tone_name>', methods=['GET'])
 def load_tone(tone_name):
     data = pd.DataFrame(list(find_sentence_tone(tone_analysis, tone_name)))
     doc = tone_to_doc_analysis(tone_analysis)
-    return render_template('analyze_text_tone.html', data=data, doc=doc)
+    return render_template('analyze_text_tone.html', data=data, doc=doc, personality_table=personality_table)
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def load_analyze():
@@ -43,9 +55,15 @@ def load_analyze():
             tone_analysis = tone_analyzer.tone(
             {'text': text},
             'application/json').get_result()
-            data = pd.DataFrame(list(find_sentence_tone(tone_analysis, 'Analytical')))
-            doc = tone_to_doc_analysis(tone_analysis)
-            return render_template('analyze_text_tone.html', data=data, doc=doc, tone_analysis=tone_analysis)
+            if "sentences_tone" in tone_analysis.keys():
+                data = pd.DataFrame(list(find_sentence_tone(tone_analysis, 'Analytical')))
+                doc = tone_to_doc_analysis(tone_analysis)
+                global personality_table
+                profile = personality_insights.profile(content = text, content_type='text/plain').get_result()
+                personality_info = all_personality_info_to_df(profile)
+                with pd.option_context('display.max_colwidth', -1):
+                    personality_table = personality_info.to_html(classes='table table-striped table-hover', index=False, escape=False)
+                return render_template('analyze_text_tone.html', data=data, doc=doc, personality_table=personality_table)
     return render_template('analyze_no_text.html')
 
 def style_table(raw_table):
@@ -55,6 +73,6 @@ def style_table(raw_table):
     return table
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081, debug=True)
+    app.run(host='0.0.0.0', port=8081, debug=False)
 
 

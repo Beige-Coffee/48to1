@@ -11,21 +11,49 @@
     <title>48to1</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="/https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="css/landing-page.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="/css/landing-page.min.css" rel="stylesheet">
+    <link href="/https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="/https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/one-page-wonder.min.css" rel="stylesheet">
-
+    <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+    <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(255, 255, 255);
+            }
+            
+            li {
+                float: left;
+            }
+            
+            li a {
+                display: block;
+                color: rgb(0, 0, 0);
+                text-align: center;
+                padding: 12px 12px;
+                text-decoration: none;
+            }
+            
+            li a:hover:not(.active) {
+                background-color: #afd5fd;
+            }
+            
+            .active {
+                background-color: #afd5fd;
+            }
+            </style>
   </head>
 
   <body>
@@ -41,15 +69,27 @@
     <!-- Image Showcases -->
     <section class="showcase">
       <div class="container-fluid p-0">
-          <div class=" my-auto showcase-text">
-    <h3>Artificial intelligence cannot accurately analyze your text if it's less than 100 words or not in sentence format :(</h3>  
-    <h3>Please re-evaluate your document and upload it again :)</h3>  
+          <div class="my-auto showcase-text">
+    <h2>Artificial Intelligence Has Detected Your Subconscious Tone - Sentence By Sentence</h2>   
+    <ul>
+           
+            {% for i, row in doc.iterrows() %}
+            <li><a href="/example/{{row['tone_name']}}">{{row['tone_name']}}</a></li>
+            {% endfor %}
+          
+    </ul>
+    <br>
+    <tbody>
+            {% block body %}
+            {% for i, row in data.iterrows() %}
+            <span style="background-color: {{row['color']}}">{{row['sentence']}}</span>
+            {% endfor %}
+            {% endblock %}
+    </tbody>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-
+    <h2>Artificial Intelligence Has Detected Your Subconscious Tone - Sentence By Sentence</h2>   
+    {{personality_table | safe}}
     <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
@@ -98,9 +138,9 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src = "/vendor/d3.min.js"></script>
   </body>
 
 </html>
