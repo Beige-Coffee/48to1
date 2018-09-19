@@ -7,11 +7,12 @@ import numpy as np
 import numpy as np
 import pandas as pd
 from watson_personality_functions import all_personality_info_to_df
-from watson_tone_analyzer_functions import text_to_sentence_analysis
+from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, tone_to_doc_analysis
 
 app = Flask(__name__,
             static_url_path='') 
 
+tone_analysis = pickle.load(open("tone_analysis.p", "rb"))
 
 @app.route('/', methods=['GET'])
 def welcome_page():
@@ -25,6 +26,13 @@ def load_research():
 def load_d3():
     data = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/analytical.pkl", "rb" ) )
     doc = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/doc.pkl", "rb" ) )
+    return render_template('analyze_text_tone.html', data=data, doc=doc)
+
+@app.route('/analyze_d3/<tone_name>', methods=['GET'])
+def load_tone(tone_name):
+    tone_analysis = pickle.load(open("tone_analysis.p", "rb"))
+    data = pd.DataFrame(list(find_sentence_tone(tone_analysis, tone_name)))
+    doc = tone_to_doc_analysis(tone_analysis)
     return render_template('analyze_text_tone.html', data=data, doc=doc)
 
 @app.route('/analyze', methods=['GET', 'POST'])

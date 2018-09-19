@@ -11,20 +11,49 @@
     <title>48to1</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="/https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="css/landing-page.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="/css/landing-page.min.css" rel="stylesheet">
+    <link href="/https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="/https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/one-page-wonder.min.css" rel="stylesheet">
+    <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+    <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: rgb(255, 255, 255);
+            }
+            
+            li {
+                float: left;
+            }
+            
+            li a {
+                display: block;
+                color: rgb(0, 0, 0);
+                text-align: center;
+                padding: 12px 12px;
+                text-decoration: none;
+            }
+            
+            li a:hover:not(.active) {
+                background-color: #afd5fd;
+            }
+            
+            .active {
+                background-color: #afd5fd;
+            }
+            </style>
   </head>
 
   <body>
@@ -45,10 +74,11 @@
     <ul>
            
             {% for i, row in doc.iterrows() %}
-            <li><a href="#about">{{row['tone_name']}}</a></li>
+            <li><a href="/analyze_d3/{{row['tone_name']}}">{{row['tone_name']}}</a></li>
             {% endfor %}
           
     </ul>
+    <br>
     <tbody>
             {% block body %}
             {% for i, row in data.iterrows() %}
@@ -56,9 +86,6 @@
             {% endfor %}
             {% endblock %}
     </tbody>
-    <br>
-    <br>
-    <br>
 
     <!-- Footer -->
     <footer class="footer bg-light">
@@ -108,9 +135,9 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src = "vendor/d3.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src = "/vendor/d3.min.js"></script>
   </body>
 
 </html>

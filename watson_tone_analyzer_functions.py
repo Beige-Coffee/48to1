@@ -44,3 +44,102 @@ def text_to_sentence_analysis(text):
     df['score'] = df['tones'].apply(get_score)
     df['tone'] = df['tones'].apply(get_tone)
     return df[['text', 'score', 'tone']]
+
+
+def label_score(score):
+    if score < .5:
+        return 'Zero'
+    elif .5 <= score <= .75:
+        return 'Mid'
+    else:
+        return 'High'
+
+
+def add_color(level, tone):
+    if tone == 'Analytical':
+        if level == 'Zero':
+            return '#21252900'
+        elif level == 'Mid':
+            return '#afd5fd'
+        else:
+            return '#6eaff1'
+    if tone == 'Joy':
+        if level == 'Zero':
+            return '#21252900'
+        elif level == 'Mid':
+            return '#fffd9d'
+        else:
+            return '#f7f338'
+    if tone == 'Sadness':
+        if level == 'Zero':
+            return '#21252900'
+        elif level == 'Mid':
+            return '#eaebec'
+        else:
+            return '#cacaca'
+    if tone == 'Anger':
+            if level == 'Zero':
+                return '#21252900'
+            elif level == 'Mid':
+                return '#f3c9c9'
+            else:
+                return '#e28d8d'
+    if tone == 'Tentative':
+            if level == 'Zero':
+                return '#21252900'
+            elif level == 'Mid':
+                return '#e5cdf1'
+            else:
+                return '#cc97e6'
+    if tone == 'Confident':
+            if level == 'Zero':
+                return '#21252900'
+            elif level == 'Mid':
+                return '#bcf5c9'
+            else:
+                return '#44e268'
+    if tone == 'Fear':
+            if level == 'Zero':
+                return '#21252900'
+            elif level == 'Mid':
+                return '#f3dee7'
+            else:
+                return '#f1a6c6'
+
+
+def find_sentence_tone(tone_analysis, tone):
+    for d in tone_analysis['sentences_tone']:
+        if len(d['tones']) > 0:
+            for sent in d['tones']:
+                if sent['tone_name'] == tone:
+                    sentence = d['text']
+                    score = sent['score']
+                    level = label_score(sent['score'])
+                    color = add_color(label_score(sent['score']), tone)
+                    yield {
+                        'sentence' : sentence,
+                        'score' : score,
+                        'level' : level,
+                        'color' : color
+                           }
+                else:
+                    sentence = d['text']
+                    level = 'Zero'
+                    yield {
+                        'sentence' : sentence,
+                        'score' : 0,
+                        'level' : 'Zero',
+                        'color' : add_color('Zero', tone)
+                           }
+        else:
+            sentence = d['text']
+            yield {
+                   'sentence' : sentence,
+                   'score' : 0,
+                   'level' : 'Zero',
+                   'color' : add_color('Zero', tone)
+                    }
+
+def tone_to_doc_analysis(tone_analysis):
+    df = text_analysis_to_pd(tone_analysis)
+    return df[['tone_name','score']]
