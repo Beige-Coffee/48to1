@@ -9,7 +9,6 @@ import pandas as pd
 from watson_personality_functions import all_personality_info_to_df
 from watson_tone_analyzer_functions import text_to_sentence_analysis
 
-
 app = Flask(__name__,
             static_url_path='') 
 
@@ -24,7 +23,8 @@ def load_research():
 
 @app.route('/analyze_d3', methods=['GET'])
 def load_d3():
-    return render_template('analyze_text_tone.html')
+    data = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/analytical.pkl", "rb" ) )
+    return render_template('analyze_text_tone.html', data=data)
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def load_analyze():

@@ -25,7 +25,6 @@
 
     <!-- Custom styles for this template -->
     <link href="css/one-page-wonder.min.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -41,11 +40,15 @@
     <!-- Image Showcases -->
     <section class="showcase">
       <div class="container-fluid p-0">
-          <div class=" my-auto showcase-text">
-    <h2>Artificial Intelligence Has Detected Your Subconscious Tone - Sentence By Sentence</h2>        
-    <br>
-    <br>
-    <h2>Artificial Intelligence Has Detected Your Personality Traits</h2>  
+          <div class="my-auto showcase-text">
+    <h2>Artificial Intelligence Has Detected Your Subconscious Tone - Sentence By Sentence</h2>   
+    <tbody>
+            {% block body %}
+            {% for i, row in data.iterrows() %}
+            <span style="background-color: {{row['color']}}">{{row['sentence']}}</span>
+            {% endfor %}
+            {% endblock %}
+    </tbody>
     <br>
     <br>
     <br>
