@@ -1,3 +1,4 @@
 .ipynb_checkpoints/
 hidden.py
 __pycache__/
+my_app/analytical.pkl
