@@ -24,7 +24,7 @@ def load_research():
 
 @app.route('/analyze_d3', methods=['GET'])
 def load_d3():
-    return render_template('analyze_d3.html')
+    return render_template('analyze_text_tone.html')
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def load_analyze():
