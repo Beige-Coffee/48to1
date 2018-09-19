@@ -7,7 +7,7 @@ import numpy as np
 import numpy as np
 import pandas as pd
 from watson_personality_functions import all_personality_info_to_df
-from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, tone_to_doc_analysis
+from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, tone_to_doc_analysis, tone_analyzer
 
 app = Flask(__name__,
             static_url_path='') 
@@ -28,9 +28,8 @@ def load_d3():
     doc = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/doc.pkl", "rb" ) )
     return render_template('analyze_text_tone.html', data=data, doc=doc)
 
-@app.route('/analyze_d3/<tone_name>', methods=['GET'])
+@app.route('/analyze/<tone_name>', methods=['GET'])
 def load_tone(tone_name):
-    tone_analysis = pickle.load(open("tone_analysis.p", "rb"))
     data = pd.DataFrame(list(find_sentence_tone(tone_analysis, tone_name)))
     doc = tone_to_doc_analysis(tone_analysis)
     return render_template('analyze_text_tone.html', data=data, doc=doc)
@@ -40,14 +39,13 @@ def load_analyze():
     if request.method == 'POST':
         text = request.form['text']
         if len(text.split()) > 100:
-            tone = text_to_sentence_analysis(text)
-            personality = all_personality_info_to_df(text)
-            with pd.option_context('display.max_colwidth', -1):
-                raw_tone_table = tone.to_html(classes='table table-striped table-hover', index=False, escape=False)
-                raw_personality_table = personality.to_html(classes='table table-striped table-hover', index=False, escape=False)
-            tone_table = style_table(raw_tone_table)
-            personality_table = style_table(raw_personality_table)
-            return render_template('analyze.html', tone_table=tone_table, personality_table=personality_table)
+            global tone_analysis
+            tone_analysis = tone_analyzer.tone(
+            {'text': text},
+            'application/json').get_result()
+            data = pd.DataFrame(list(find_sentence_tone(tone_analysis, 'Analytical')))
+            doc = tone_to_doc_analysis(tone_analysis)
+            return render_template('analyze_text_tone.html', data=data, doc=doc, tone_analysis=tone_analysis)
     return render_template('analyze_no_text.html')
 
 def style_table(raw_table):
