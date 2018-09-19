@@ -42,6 +42,13 @@
       <div class="container-fluid p-0">
           <div class="my-auto showcase-text">
     <h2>Artificial Intelligence Has Detected Your Subconscious Tone - Sentence By Sentence</h2>   
+    <ul>
+           
+            {% for i, row in doc.iterrows() %}
+            <li><a href="#about">{{row['tone_name']}}</a></li>
+            {% endfor %}
+          
+    </ul>
     <tbody>
             {% block body %}
             {% for i, row in data.iterrows() %}

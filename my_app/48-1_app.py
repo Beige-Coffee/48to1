@@ -24,7 +24,8 @@ def load_research():
 @app.route('/analyze_d3', methods=['GET'])
 def load_d3():
     data = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/analytical.pkl", "rb" ) )
-    return render_template('analyze_text_tone.html', data=data)
+    doc = pickle.load( open( "/Users/austin/Documents/Knowledge/48:1/my_app/doc.pkl", "rb" ) )
+    return render_template('analyze_text_tone.html', data=data, doc=doc)
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def load_analyze():
