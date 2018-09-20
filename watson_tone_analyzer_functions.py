@@ -143,3 +143,22 @@ def find_sentence_tone(tone_analysis, tone):
 def tone_to_doc_analysis(tone_analysis):
     df = text_analysis_to_pd(tone_analysis)
     return df[['tone_name','score']]
+
+def find_doc_tones(tone_analysis):
+    tones = []
+    for d in tone_analysis['sentences_tone']:
+        if len(d['tones']) > 0:
+            for sent in d['tones']:
+                if sent['tone_name'] not in tones:
+                    tone = sent['tone_name']
+                    tones.append(tone)
+                    yield {
+                        'tone_name' : tone
+                           }
+                else:
+                    continue
+        else:
+            continue
+
+def doc_tone_finder(tone_analysis):
+    return pd.DataFrame(list(find_doc_tones(tone_analysis)))

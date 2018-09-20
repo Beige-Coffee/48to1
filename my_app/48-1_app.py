@@ -7,7 +7,7 @@ import numpy as np
 import numpy as np
 import pandas as pd
 from watson_personality_functions import all_personality_info_to_df, personality_insights
-from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, tone_to_doc_analysis, tone_analyzer
+from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, doc_tone_finder, tone_analyzer
 
 app = Flask(__name__,
             static_url_path='') 
@@ -24,7 +24,7 @@ def load_research():
 def load_example():
     tone_analysis_example = pickle.load(open("tone_analysis.p", "rb"))
     data = pd.DataFrame(list(find_sentence_tone(tone_analysis_example, 'Analytical')))
-    doc = tone_to_doc_analysis(tone_analysis_example)
+    doc = doc_tone_finder(tone_analysis_example)
     personailty_df = pickle.load( open( "personality.pkl", "rb" ) )
     with pd.option_context('display.max_colwidth', -1):
         personality_table =  personailty_df.to_html(classes='table table-striped table-hover', index=False, escape=False)
@@ -34,7 +34,7 @@ def load_example():
 def load_example_tone(tone_name):
     tone_analysis_example = pickle.load(open("tone_analysis.p", "rb"))
     data = pd.DataFrame(list(find_sentence_tone(tone_analysis_example, tone_name)))
-    doc = tone_to_doc_analysis(tone_analysis_example)
+    doc = doc_tone_finder(tone_analysis_example)
     personailty_df = pickle.load( open( "personality.pkl", "rb" ) )
     with pd.option_context('display.max_colwidth', -1):
         personality_table =  personailty_df.to_html(classes='table table-striped table-hover', index=False, escape=False)
@@ -43,7 +43,7 @@ def load_example_tone(tone_name):
 @app.route('/analyze/<tone_name>', methods=['GET'])
 def load_tone(tone_name):
     data = pd.DataFrame(list(find_sentence_tone(tone_analysis, tone_name)))
-    doc = tone_to_doc_analysis(tone_analysis)
+    doc = doc_tone_finder(tone_analysis)
     return render_template('analyze_text_tone.html', data=data, doc=doc, personality_table=personality_table)
 
 @app.route('/analyze', methods=['GET', 'POST'])
@@ -57,7 +57,7 @@ def load_analyze():
             'application/json').get_result()
             if "sentences_tone" in tone_analysis.keys():
                 data = pd.DataFrame(list(find_sentence_tone(tone_analysis, 'Analytical')))
-                doc = tone_to_doc_analysis(tone_analysis)
+                doc = doc_tone_finder(tone_analysis)
                 global personality_table
                 profile = personality_insights.profile(content = text, content_type='text/plain').get_result()
                 personality_info = all_personality_info_to_df(profile)
