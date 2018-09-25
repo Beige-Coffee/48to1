@@ -2,3 +2,5 @@
 hidden.py
 __pycache__/
 my_app/analytical.pkl
+my_app/templates/backup.html
+my_app/48-1_app_backup.py
