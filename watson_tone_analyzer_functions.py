@@ -122,6 +122,7 @@ def find_sentence_tone(tone_analysis, tone):
                         'level' : level,
                         'color' : color
                            }
+                    break
                 else:
                     sentence = d['text']
                     level = 'Zero'
@@ -131,6 +132,7 @@ def find_sentence_tone(tone_analysis, tone):
                         'level' : 'Zero',
                         'color' : add_color('Zero', tone)
                            }
+                    break
         else:
             sentence = d['text']
             yield {
