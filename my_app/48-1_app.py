@@ -16,6 +16,10 @@ app = Flask(__name__,
 def welcome_page():
     return render_template('index.html')
 
+@app.route('/contact', methods=['GET'])
+def contact_page():
+    return render_template('contact.html')
+
 @app.route('/research', methods=['GET'])
 def load_research():
     return render_template('research.html')
