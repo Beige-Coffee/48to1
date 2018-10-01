@@ -109,31 +109,7 @@ def add_color(level, tone):
 
 def find_sentence_tone(tone_analysis, tone):
     for d in tone_analysis['sentences_tone']:
-        if len(d['tones']) > 0:
-            for sent in d['tones']:
-                if sent['tone_name'] == tone:
-                    sentence = d['text']
-                    score = sent['score']
-                    level = label_score(sent['score'])
-                    color = add_color(label_score(sent['score']), tone)
-                    yield {
-                        'sentence' : sentence,
-                        'score' : score,
-                        'level' : level,
-                        'color' : color
-                           }
-                    break
-                else:
-                    sentence = d['text']
-                    level = 'Zero'
-                    yield {
-                        'sentence' : sentence,
-                        'score' : 0,
-                        'level' : 'Zero',
-                        'color' : add_color('Zero', tone)
-                           }
-                    break
-        else:
+        if len(d['tones']) == 0:
             sentence = d['text']
             yield {
                    'sentence' : sentence,
@@ -141,6 +117,33 @@ def find_sentence_tone(tone_analysis, tone):
                    'level' : 'Zero',
                    'color' : add_color('Zero', tone)
                     }
+        else:
+            tones = []
+            for sent in d['tones']:
+                tones.append(sent['tone_name'])
+            if tone not in tones:
+                sentence = d['text']
+                yield {
+                       'sentence' : sentence,
+                       'score' : 0,
+                       'level' : 'Zero',
+                       'color' : add_color('Zero', tone)
+                        }
+            else:
+                for sent in d['tones']:
+                    if sent['tone_name'] != tone:
+                        continue
+                    else:
+                        sentence = d['text']
+                        score = sent['score']
+                        level = label_score(sent['score'])
+                        color = add_color(label_score(sent['score']), tone)
+                        yield {
+                            'sentence' : sentence,
+                            'score' : score,
+                            'level' : level,
+                            'color' : color
+                               }
 
 def tone_to_doc_analysis(tone_analysis):
     df = text_analysis_to_pd(tone_analysis)
