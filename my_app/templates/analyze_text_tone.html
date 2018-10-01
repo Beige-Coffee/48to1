@@ -76,9 +76,17 @@
 
     <!-- Image Showcases -->
     <section class="showcase">
-      <div class="container-fluid p-0">
-          <div class="my-auto showcase-text">
-    <h2>Artificial Intelligence Has Detected Your Subconscious Tone - Sentence By Sentence</h2>   
+            <div class="container-fluid p-0">
+                <div class="my-auto showcase-text">
+          <img src="/img/tone.jpg" width="1000" height="200" alt="tone_guide">
+          <h3>How does this work?</h3>
+          <span>LifeStyleDesign built on top of IBM Watson, an artificial intelligence tool built by some of the world's smartest people.</span>
+          <br>
+          <br>
+          <span>Simply upload your text and click any of the categories below to see the presence of that emotion highlighted in your text. If you don't see an emotion appear as an option, that's because the A.I. didn't detect it. Now, ask yourself, is that a good thing?</span>
+          <br>
+          <br>
+          <br>
     <ul>
            
             {% for i, row in doc.iterrows() %}
@@ -94,6 +102,12 @@
             {% endfor %}
             {% endblock %}
     </tbody>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
 
         <!-- Footer -->
