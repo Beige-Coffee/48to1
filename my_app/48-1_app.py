@@ -56,6 +56,7 @@ def load_analyze():
         text = request.form['text']
         if len(text.split()) > 1:
             global tone_analysis
+            tone_analyzer.set_default_headers({'x-watson-learning-opt-out': "true"})
             tone_analysis = tone_analyzer.tone(
             {'text': text},
             'application/json').get_result()
