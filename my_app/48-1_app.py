@@ -28,7 +28,7 @@ def load_example():
     personailty_df = pickle.load( open( "personality.pkl", "rb" ) )
     with pd.option_context('display.max_colwidth', -1):
         personality_table =  personailty_df.to_html(classes='table table-striped table-hover', index=False, escape=False)
-        return render_template('example.html', data=data, doc=doc, personality_table=personality_table)
+        return render_template('example.html', data=data, doc=doc)
 
 @app.route('/example/<tone_name>', methods=['GET'])
 def load_example_tone(tone_name):
@@ -38,19 +38,19 @@ def load_example_tone(tone_name):
     personailty_df = pickle.load( open( "personality.pkl", "rb" ) )
     with pd.option_context('display.max_colwidth', -1):
         personality_table =  personailty_df.to_html(classes='table table-striped table-hover', index=False, escape=False)
-        return render_template('example.html', data=data, doc=doc, personality_table=personality_table)
+        return render_template('example.html', data=data, doc=doc)
 
 @app.route('/analyze/<tone_name>', methods=['GET'])
 def load_tone(tone_name):
     data = pd.DataFrame(list(find_sentence_tone(tone_analysis, tone_name)))
     doc = doc_tone_finder(tone_analysis)
-    return render_template('analyze_text_tone.html', data=data, doc=doc, personality_table=personality_table)
+    return render_template('analyze_text_tone.html', data=data, doc=doc)
 
 @app.route('/analyze', methods=['GET', 'POST'])
 def load_analyze():
     if request.method == 'POST':
         text = request.form['text']
-        if len(text.split()) > 100:
+        if len(text.split()) > 1:
             global tone_analysis
             tone_analysis = tone_analyzer.tone(
             {'text': text},
@@ -58,12 +58,7 @@ def load_analyze():
             if "sentences_tone" in tone_analysis.keys():
                 data = pd.DataFrame(list(find_sentence_tone(tone_analysis, 'Analytical')))
                 doc = doc_tone_finder(tone_analysis)
-                global personality_table
-                profile = personality_insights.profile(content = text, content_type='text/plain').get_result()
-                personality_info = all_personality_info_to_df(profile)
-                with pd.option_context('display.max_colwidth', -1):
-                    personality_table = personality_info.to_html(classes='table table-striped table-hover', index=False, escape=False)
-                return render_template('analyze_text_tone.html', data=data, doc=doc, personality_table=personality_table)
+                return render_template('analyze_text_tone.html', data=data, doc=doc)
     return render_template('analyze_no_text.html')
 
 def style_table(raw_table):
@@ -73,6 +68,6 @@ def style_table(raw_table):
     return table
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081, debug=False)
+    app.run(host='0.0.0.0', port=8082, debug=True)
 
 
