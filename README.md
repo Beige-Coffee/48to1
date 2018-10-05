@@ -1,4 +1,7 @@
-# 48to1
+# LifeStyleDesign
+
+## What is LifeStyleDesign?
+LifeStyleDesign is a way of living. More specifically, it's a way of utilizing the tools available to us to strategically plan our lives to accomplish goals. For instance, are you seeking new career/educational opportunities? You wouldn't want to submit a cover letter or essay that's loaded with sad and angry emotions! You want to send in something analytical, confident, and joyful! This application helps you do just that and more. 
 
 ## In A Nutshell...
 A user will upload their written text and IBM Watson will analyze their personality traits, mindset (analytic v.s. narrative), sentiment, and more. This can be used to extract insights from emails, cover letter, diary entries, and much more.
