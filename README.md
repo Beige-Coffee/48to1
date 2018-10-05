@@ -1,12 +1,15 @@
 # 48to1
 
 ## In A Nutshell...
-A user will spend 1 hour over the course of 48 hours (30 minutes per day) writing down their future goals (career, relationship, education, etc.). Then, using machine learning, 48to1 will analyze their personality traits, mindset (analytic v.s. narrative), sentiment, and more. Subsequently, 48to1 will provide user-specific empirical research to assist the user in planning and working towards their goals.
+A user will upload their written text and IBM Watson will analyze their personality traits, mindset (analytic v.s. narrative), sentiment, and more. This can be used to extract insights from emails, cover letter, diary entries, and much more.
 
 Please note that this is a work-in-progress, and, therefore, the code may be 'busy' over the next couple of weeks. Nonetheless, if you'd like to see a working **minimum viable product**, you can check out the live website here: http://lifestyledesign.online
 
 Thanks,
 - Austin (Sep 2018)
+
+
+A large motivation for this project stems from the concept of writing about your "best-self" (aka "self-authoring"). There is plently of research on this topic, which I've briefly summarized below, detailing how such an exercise can be conducive to a healthy, enjoyable, and successful lifestyle. Therefore, one of my aims with this project is to give users an outlet where they can write about their "best-self", connecting all the dots from their past-self to their ideal future-self. Subsequently, artificial intelligence will extract emotions out their written narrative and display those in an intuitive manner for users to take advantage of and use as a tool to think through events in their lives and take calculated steps forward towards new goals.
 
 ## The Research...
 _For a detailed look at the research referenced in the following sentences, please see 'Citations' - at the bottom._
