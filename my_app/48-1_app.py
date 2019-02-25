@@ -4,7 +4,6 @@ from collections import Counter
 from flask import Flask, request, render_template, jsonify
 import pickle
 import numpy as np
-import numpy as np
 import pandas as pd
 from watson_personality_functions import all_personality_info_to_df, personality_insights
 from watson_tone_analyzer_functions import text_to_sentence_analysis, find_sentence_tone, doc_tone_finder, tone_analyzer
